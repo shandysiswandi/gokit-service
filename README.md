@@ -1,3 +1,6 @@
+![diagram](diagram.png)
+
+## About
 go-kit service is a template for building microservice using golang with tranport `http` or `grpc`.
 
 ## Table of Content
