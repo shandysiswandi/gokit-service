@@ -3,6 +3,7 @@ go-kit service is a template for building microservice using golang with tranpor
 ## Table of Content
 - [Guide](#guide)
     - [Pre-Development](#pre-development)
+    - [Tech Stack](#tech-stack)
     - [Commands](#commands)
     - [Example](#example)
 - [Rules](#rules)
@@ -27,7 +28,21 @@ Before starting to use this project, it is a good idea to read the guide below.
 - Docker is an open platform for developing, shipping, and running applications. [More Info](https://www.docker.com)
 - Goose for create migration file and run migration to database [More Info](https://github.com/pressly/goose)
 
+### Tech Stack
+- x/crypto [github](https://github.com/golang/crypto) or [website](https://pkg.go.dev/golang.org/x/crypto)
+- gorilla/mux [github](https://github.com/gorilla/mux) or [website](https://www.gorillatoolkit.org)
+- go-kit/kit [github](https://github.com/go-kit/kit) or [website](https://gokit.io)
+- go-kit/log [github](https://github.com/go-kit/log) or [website](https://gokit.io)
+- lib/pg [github](https://github.com/lib/pg) or [website](https://pkg.go.dev/github.com/lib/pq)
+- go-playground/validator [github](https://github.com/go-playground/validator) or [website](https://pkg.go.dev/github.com/go-playground/validator/v10)
+- joho/godotenv [github](https://github.com/joho/godotenv) or [website](https://pkg.go.dev/github.com/joho/godotenv)
+
 ### Commands
+```sh
+# how to generate server.key and server.crt
+make gentls
+```
+
 ```sh
 # how to run application
 make run
@@ -36,6 +51,13 @@ make run
 ```sh
 # how to run migration
 make migrate
+```
+
+```sh
+# how to create migration file
+make migration
+# or
+make migration filename=foo
 ```
 
 ```sh
