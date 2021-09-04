@@ -19,7 +19,7 @@ func TestGet(t *testing.T) {
 			want:     "shandy",
 		},
 		{
-			title:    "test get 1",
+			title:    "test get 2",
 			key:      "USERS",
 			defaults: []string{"me"},
 			want:     "me",
