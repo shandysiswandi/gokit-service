@@ -1,0 +1,22 @@
+# environment varibales
+.env 
+
+# unit test coverage
+*.out
+
+# secret information 
+*.key
+*.crt
+
+# Test binary, built with `go test -c`
+*.test
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
