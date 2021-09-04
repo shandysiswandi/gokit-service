@@ -32,7 +32,7 @@ func init() {
 }
 
 // getPackageName reduces a fully qualified function name to the package name
-// There really ought to be to be a better way...
+// There really thought to be to be a better way
 func getPackageName(f string) string {
 	for {
 		lastPeriod := strings.LastIndex(f, ".")
@@ -77,14 +77,12 @@ func getCaller() log.Valuer {
 }
 
 // SetOutput set output for logger
-//
-// Todo: not implement
 func SetOutput(out io.Writer) {
 	if out == nil {
 		out = os.Stderr
 	}
 
-	logInstance = log.NewLogfmtLogger(log.NewSyncWriter(out))
+	logInstance = log.NewJSONLogger(log.NewSyncWriter(out))
 	logInstance = log.With(logInstance, "time", timeLayout, "caller", getCaller())
 }
 
