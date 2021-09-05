@@ -81,7 +81,7 @@ func main() {
 		dbRW.Close()
 	}()
 
-	if err := h.Shutdown(ctx, server); err != nil {
+	if err := server.Shutdown(ctx); err != nil {
 		logger.Info("h.Shutdown " + err.Error())
 		os.Exit(1)
 	}
