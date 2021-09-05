@@ -22,12 +22,12 @@ func TestHash(t *testing.T) {
 		},
 	}
 
-	for _, tc := range testTable {
-		t.Run(tc.title, func(t *testing.T) {
-			_, err := Hash(tc.plain)
+	for _, testcase := range testTable {
+		t.Run(testcase.title, func(t *testing.T) {
+			_, err := Hash(testcase.plain)
 
-			if err != tc.wantErr {
-				t.Errorf("Expected %v, but got %v", tc.wantErr, err)
+			if err != testcase.wantErr {
+				t.Errorf("Expected %v, but got %v", testcase.wantErr, err)
 			}
 		})
 	}
@@ -61,12 +61,12 @@ func TestCompare(t *testing.T) {
 		},
 	}
 
-	for _, tc := range testTable {
-		t.Run(tc.title, func(t *testing.T) {
-			err := Compare(tc.hash, tc.plain)
+	for _, testCase := range testTable {
+		t.Run(testCase.title, func(t *testing.T) {
+			err := Compare(testCase.hash, testCase.plain)
 
-			if err != tc.wantErr {
-				t.Errorf("Expected %v, but got %v", tc.wantErr, err)
+			if err != testCase.wantErr {
+				t.Errorf("Expected %v, but got %v", testCase.wantErr, err)
 			}
 		})
 	}
@@ -101,12 +101,12 @@ func TestIsValid(t *testing.T) {
 		},
 	}
 
-	for _, tc := range testTable {
-		t.Run(tc.title, func(t *testing.T) {
-			isVal := IsValid(tc.hash, tc.plain)
+	for _, testcase := range testTable {
+		t.Run(testcase.title, func(t *testing.T) {
+			isVal := IsValid(testcase.hash, testcase.plain)
 
-			if isVal != tc.want {
-				t.Errorf("Expected %v, but got %v", tc.want, isVal)
+			if isVal != testcase.want {
+				t.Errorf("Expected %v, but got %v", testcase.want, isVal)
 			}
 		})
 	}
