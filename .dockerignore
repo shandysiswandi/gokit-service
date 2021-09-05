@@ -1,0 +1,14 @@
+.vscode
+.git
+
+.env.example
+.dockerignore
+.gitignore
+
+coverage.out
+diagram.png
+Dockerfile
+README.md
+
+*.crt
+*.key
