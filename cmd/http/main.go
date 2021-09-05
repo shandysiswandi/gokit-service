@@ -53,16 +53,19 @@ func main() {
 	// setup endpoints (controller)
 	end := endpoint.NewEndpoints(srv)
 
-	// setup tranport (http server)
+	// setup tranport (router)
 	h := httptrans.NewServer(end)
+
+	// setup http server
 	server := &http.Server{
-		Handler:      h.Serve(),
+		Handler:      h,
 		Addr:         "0.0.0.0:" + env.Get("APP_PORT"),
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 		IdleTimeout:  time.Second * 30,
 	}
 
+	// running server in groutine
 	go func() {
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			logger.Info("server.ListenAndServe " + err.Error())
@@ -71,18 +74,23 @@ func main() {
 	}()
 	logger.Info("server listen on port " + env.Get("APP_PORT"))
 
+	// setup channel for listen some trigger
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+
+	// get channel value, it will blocking until channel is writing some value
 	<-c
 
+	// setup context with timeout for shutdown the server
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer func() {
 		cancel()
 		dbRW.Close()
 	}()
 
+	// shutdown server
 	if err := server.Shutdown(ctx); err != nil {
-		logger.Info("h.Shutdown " + err.Error())
+		logger.Info("server.Shutdown " + err.Error())
 		os.Exit(1)
 	}
 
