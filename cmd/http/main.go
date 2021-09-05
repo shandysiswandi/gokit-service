@@ -14,7 +14,7 @@ import (
 	"github.com/shandysiswandi/gokit-service/pkg/logger"
 	"github.com/shandysiswandi/gokit-service/repository/postgres"
 	"github.com/shandysiswandi/gokit-service/service"
-	httptrans "github.com/shandysiswandi/gokit-service/transport/http-trans"
+	"github.com/shandysiswandi/gokit-service/transport/httptrans"
 )
 
 func main() {
