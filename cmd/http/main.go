@@ -54,7 +54,7 @@ func main() {
 	end := endpoint.NewEndpoints(srv)
 
 	// setup tranport (router)
-	h := httptrans.NewServer(end)
+	h := httptrans.NewServer(end, env.Get("JWT_SECRET"))
 
 	// setup http server
 	server := &http.Server{
