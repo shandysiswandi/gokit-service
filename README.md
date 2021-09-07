@@ -3,6 +3,48 @@
 ## About
 go-kit service is a template for building microservice using golang with tranport `http` or `grpc`.
 
+## Structure Project
+```
+.
+├── cmd
+│   ├── grpc
+│   ├── http
+│   └── migrate
+├── endpoint
+├── entity
+├── mock
+├── pkg
+│   ├── bcrypt
+│   ├── env
+│   └── logger
+├── proto
+├── repository
+│   └── postgres
+├── resource
+│   ├── migration
+│   ├── seeder
+│   └── view
+├── service
+├── transport
+│   ├── grpc-trans
+│   └── http-trans
+└── validate
+```
+| Directory   | Description |
+| :-          | :-          |
+| cmd         | ... 
+| endpoint    | ...
+| entity      | ...
+| mock        | ... 
+| pkg         | ...
+| proto       | ...
+| repository  | ...
+| resource    | ...
+| service     | ...
+| transport   | ...
+| validate    | ...
+
+
 ## Table of Content
 - [Guide](#guide)
     - [Pre-Development](#pre-development)
