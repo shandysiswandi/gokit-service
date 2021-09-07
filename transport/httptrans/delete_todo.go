@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 	"github.com/shandysiswandi/gokit-service/entity"
@@ -15,10 +14,6 @@ func decodeDeleteTodoRequest(ctx context.Context, r *http.Request) (interface{},
 	id, ok := vars["id"]
 	if !ok {
 		return nil, ErrBadRouting
-	}
-
-	if _, err := strconv.Atoi(id); err != nil {
-		return nil, err
 	}
 
 	return entity.DeleteTodoRequest{

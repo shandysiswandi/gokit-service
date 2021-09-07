@@ -16,6 +16,8 @@ import (
 var (
 	// ErrBadRouting error programmer
 	ErrBadRouting = errors.New("inconsistent mapping between route and handler (programmer error)")
+	// ErrBadRequest
+	ErrBadRequest = errors.New("bad request")
 )
 
 // NewServer is
