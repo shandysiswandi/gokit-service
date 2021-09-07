@@ -24,3 +24,6 @@ gentls:
 	@openssl req -new -x509 -sha256 -key server.key -out server.crt -days 3650 \
 		-subj "/C=ID/ST=Jawa Tengah/L=Pemalang/O=Ancene/OU=IT/CN=ancene.org/emailAddress=anceneorg@gmail.com"
 	@echo "Success generate 'server.key' and 'server.crt'"
+
+protoc:
+	@protoc --go_out=plugins=grpc:proto/. proto/todo.proto
