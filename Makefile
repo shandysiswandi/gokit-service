@@ -27,3 +27,6 @@ gentls:
 
 protoc:
 	@protoc --go_out=plugins=grpc:proto/. proto/todo.proto
+
+mock:
+	@mockery --output=mock --dir=repository --all
