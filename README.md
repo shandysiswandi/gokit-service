@@ -72,25 +72,35 @@ Before starting to use this project, it is a good idea to read the guide below.
 - GNU Make for running a command [More Info](https://www.gnu.org/software/make)
 - Docker is an open platform for developing, shipping, and running applications. [More Info](https://www.docker.com)
 - Goose for create migration file and run migration to database [More Info](https://github.com/pressly/goose)
+- Mockery for generate mock from interface [More Info](https://github.com/vektra/mockery)
 
 ### Tech Stack
-- x/crypto [github](https://github.com/golang/crypto) or [website](https://pkg.go.dev/golang.org/x/crypto)
-- gorilla/mux [github](https://github.com/gorilla/mux) or [website](https://www.gorillatoolkit.org)
 - go-kit/kit [github](https://github.com/go-kit/kit) or [website](https://gokit.io)
 - go-kit/log [github](https://github.com/go-kit/log) or [website](https://gokit.io)
-- lib/pg [github](https://github.com/lib/pg) or [website](https://pkg.go.dev/github.com/lib/pq)
 - go-playground/validator [github](https://github.com/go-playground/validator) or [website](https://pkg.go.dev/github.com/go-playground/validator/v10)
+- gorilla/mux [github](https://github.com/gorilla/mux) or [website](https://www.gorillatoolkit.org)
 - joho/godotenv [github](https://github.com/joho/godotenv) or [website](https://pkg.go.dev/github.com/joho/godotenv)
+- lib/pg [github](https://github.com/lib/pg) or [website](https://pkg.go.dev/github.com/lib/pq)
+- pressly/goose [github](https://github.com/pressly/goose) or [website](https://pressly.github.io/goose)
+- stretchr/testify [github](https://github.com/stretchr/testify) or [website](https://pkg.go.dev/github.com/stretchr/testify)
+- x/crypto [github](https://github.com/golang/crypto) or [website](https://pkg.go.dev/golang.org/x/crypto)
+- google.golang.org/grpc [github](https://github.com/grpc/grpc-go) or [website](https://grpc.io)
+- google.golang.org/protobuf [github](https://github.com/protocolbuffers/protobuf-go) or [website](https://developers.google.com/protocol-buffers)
 
 ### Commands
 ```sh
-# how to generate server.key and server.crt
-make gentls
+# how to run application
+make run
 ```
 
 ```sh
-# how to run application
-make run
+# how to run test
+make test
+```
+
+```sh
+# how to run test with covarage
+make cover
 ```
 
 ```sh
@@ -106,13 +116,18 @@ make migration filename=foo
 ```
 
 ```sh
-# how to run test
-make test
+# how to generate server.key and server.crt
+make gentls
 ```
 
 ```sh
-# how to run test with covarage
-make cover
+# how to generate generate from *.proto
+make protoc
+```
+
+```sh
+# how to generate mock from interface
+make mock
 ```
 
 ### Example
