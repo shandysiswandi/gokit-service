@@ -75,17 +75,21 @@ Before starting to use this project, it is a good idea to read the guide below.
 - Mockery for generate mock from interface [More Info](https://github.com/vektra/mockery)
 
 ### Tech Stack
-- go-kit/kit [github](https://github.com/go-kit/kit) or [website](https://gokit.io)
-- go-kit/log [github](https://github.com/go-kit/log) or [website](https://gokit.io)
-- go-playground/validator [github](https://github.com/go-playground/validator) or [website](https://pkg.go.dev/github.com/go-playground/validator/v10)
-- gorilla/mux [github](https://github.com/gorilla/mux) or [website](https://www.gorillatoolkit.org)
-- joho/godotenv [github](https://github.com/joho/godotenv) or [website](https://pkg.go.dev/github.com/joho/godotenv)
-- lib/pg [github](https://github.com/lib/pg) or [website](https://pkg.go.dev/github.com/lib/pq)
-- pressly/goose [github](https://github.com/pressly/goose) or [website](https://pressly.github.io/goose)
-- stretchr/testify [github](https://github.com/stretchr/testify) or [website](https://pkg.go.dev/github.com/stretchr/testify)
-- x/crypto [github](https://github.com/golang/crypto) or [website](https://pkg.go.dev/golang.org/x/crypto)
-- google.golang.org/grpc [github](https://github.com/grpc/grpc-go) or [website](https://grpc.io)
-- google.golang.org/protobuf [github](https://github.com/protocolbuffers/protobuf-go) or [website](https://developers.google.com/protocol-buffers)
+- DATA-DOG/go-sqlmock [github](https://github.com/DATA-DOG/go-sqlmock)
+- go-kit/kit [github](https://github.com/go-kit/kit)
+- go-kit/log [github](https://github.com/go-kit/log)
+- go-playground/validator [github](https://github.com/go-playground/validator)
+- golang/protobuf [github](https://github.com/golang/protobuf)
+- google/uuid [github](https://github.com/google/uuid)
+- gorilla/mux [github](https://github.com/gorilla/mux)
+- grpc-ecosystem/grpc-gateway [github](https://github.com/grpc-ecosystem/grpc-gateway)
+- joho/godotenv [github](https://github.com/joho/godotenv)
+- lib/pg [github](https://github.com/lib/pg)
+- pressly/goose [github](https://github.com/pressly/goose)
+- stretchr/testify [github](https://github.com/stretchr/testify)
+- x/crypto [github](https://github.com/golang/crypto)
+- google.golang.org/grpc [github](https://github.com/grpc/grpc-go)
+- google.golang.org/protobuf [github](https://github.com/protocolbuffers/protobuf-go)
 
 ### Commands
 ```sh
