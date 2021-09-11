@@ -48,7 +48,7 @@ func main() {
 	// var cacheRW repository.CacheReaderWriter
 
 	// setup business logic
-	srv := service.NewTodoService(dbRW)
+	srv := service.NewTodoService(dbRW, nil)
 
 	// setup endpoints (controller)
 	end := endpoint.NewEndpoints(srv)
