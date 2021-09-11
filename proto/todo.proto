@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package v1;
+option go_package = "./;v1";
+
+enum Status {
+  DRAFT       = 0; // default value
+  IN_PROGRESS = 1;
+  CANCEL      = 2;
+  DONE        = 3;
+}
+
+message Todo {
+  string id           = 1 [ json_name = "id" ];
+  string title        = 2 [ json_name = "title" ];
+  string description  = 3 [ json_name = "description" ];
+  Status status       = 4 [ json_name = "status" ];
+}
+
+message GetAllTodoRequest {}
+message GetAllTodoResponse {
+  int32 code          = 1 [ json_name = "code" ];
+  string status       = 2 [ json_name = "status" ];
+  string message      = 3 [ json_name = "message" ];
+  repeated Todo data  = 4 [ json_name = "data" ];
+}
+
+message GetTodoByIDRequest { 
+  string id = 1 [ json_name = "id" ];
+}
+message GetTodoByIDResponse {
+  int32 code      = 1 [ json_name = "code" ];
+  string status   = 2 [ json_name = "status" ];
+  string message  = 3 [ json_name = "message" ];
+  Todo data       = 4 [ json_name = "data" ];
+}
+
+message CreateTodoRequest {
+  string title        = 1 [ json_name = "title" ];
+  string description  = 2 [ json_name = "description" ];
+}
+message CreateTodoResponse {
+  int32 code      = 1 [ json_name = "code" ];
+  string status   = 2 [ json_name = "status" ];
+  string message  = 3 [ json_name = "message" ];
+}
+
+message UpdateTodoRequest {
+  string id           = 1 [ json_name = "id" ];
+  string title        = 2 [ json_name = "title" ];
+  string description  = 3 [ json_name = "description" ];
+  Status status       = 4 [ json_name = "status" ];
+}
+message UpdateTodoResponse {
+  int32 code      = 1 [ json_name = "code" ];
+  string status   = 2 [ json_name = "status" ];
+  string message  = 3 [ json_name = "message" ];
+}
+
+message DeleteTodoRequest { 
+  string id = 1 [ json_name = "id" ];
+}
+message DeleteTodoResponse {
+  int32 code      = 1 [ json_name = "code" ];
+  string status   = 2 [ json_name = "status" ];
+  string message  = 3 [ json_name = "message" ];
+}
+
+service TodoService {
+  rpc GetAllTodo(GetAllTodoRequest) returns (GetAllTodoResponse) {}
+  rpc GetTodoByID(GetTodoByIDRequest) returns (GetTodoByIDResponse) {}
+  rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse) {}
+  rpc UpdateTodo(UpdateTodoRequest) returns (UpdateTodoResponse) {}
+  rpc DeleteTodo(DeleteTodoRequest) returns (DeleteTodoResponse) {}
+}

@@ -1,0 +1,21 @@
+type: google.api.Service
+config_version: 3
+
+http:
+  rules:
+    - selector: v1.TodoService.GetAllTodo
+      get: "/v1/todos"
+
+    - selector: v1.TodoService.GetTodoByID
+      get: "/v1/todos/{id}"
+
+    - selector: v1.TodoService.CreateTodo
+      post: "/v1/todos"
+      body: "*"
+
+    - selector: v1.TodoService.UpdateTodo
+      put: "/v1/todos/{id}"
+      body: "*"
+
+    - selector: v1.TodoService.DeleteTodo
+      delete: "/v1/todos/{id}"
