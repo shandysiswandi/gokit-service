@@ -21,7 +21,7 @@ var (
 )
 
 // NewServer is
-func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
+func NewServer(end endpoint.Endpoints) http.Handler {
 	r := mux.NewRouter()
 
 	// set custom not found router
@@ -35,12 +35,9 @@ func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
 		httptransport.ServerErrorEncoder(httpServerErrorEncoder),
 	}
 
-	// middleware
-	middJWT := middlewareJWT(jwtSecret)
-
 	// GET /todos retrieve all todo
 	r.Methods(http.MethodGet).Path("/todos").Handler(httptransport.NewServer(
-		middJWT(end.GetAllTodo),
+		end.GetAllTodo,
 		decodeGetAllTodoRequest,
 		encodeGetAllTodoResponse,
 		options...,
@@ -48,7 +45,7 @@ func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
 
 	// GET /todos/:id retrieve all todo
 	r.Methods(http.MethodGet).Path("/todos/{id}").Handler(httptransport.NewServer(
-		middJWT(end.GetTodoByID),
+		end.GetTodoByID,
 		decodeGetTodoByIDRequest,
 		encodeGetTodoByIDResponse,
 		options...,
@@ -56,7 +53,7 @@ func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
 
 	// POST /todos create todo
 	r.Methods(http.MethodPost).Path("/todos").Handler(httptransport.NewServer(
-		middJWT(end.CreateTodo),
+		end.CreateTodo,
 		decodeCreateTodoRequest,
 		encodeCreateTodoResponse,
 		options...,
@@ -64,7 +61,7 @@ func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
 
 	// PUT /todos/:id update todo by id
 	r.Methods(http.MethodPut).Path("/todos/{id}").Handler(httptransport.NewServer(
-		middJWT(end.UpdateTodo),
+		end.UpdateTodo,
 		decodeUpdateTodoRequest,
 		encodeUpdateTodoResponse,
 		options...,
@@ -72,7 +69,7 @@ func NewServer(end endpoint.Endpoints, jwtSecret string) http.Handler {
 
 	// DELETE /todos/:id delete todo by id
 	r.Methods(http.MethodDelete).Path("/todos/{id}").Handler(httptransport.NewServer(
-		middJWT(end.DeleteTodo),
+		end.DeleteTodo,
 		decodeDeleteTodoRequest,
 		encodeDeleteTodoResponse,
 		options...,
