@@ -1,0 +1,34 @@
+# Variables
+@hostname = http://localhost:50001
+@token = Bearer token
+
+### Get All Todo
+GET {{hostname}}/todos
+Authorization: {{token}}
+
+### Get Todo By ID
+GET {{hostname}}/todos/1c06d3eb-1c30-4c70-9e27-020da1f533ed
+Authorization: {{token}}
+
+### Create Todo
+POST {{hostname}}/todos
+Authorization: {{token}}
+
+{
+    "title":"dua",
+    "description":"some desc 2"
+}
+
+### Update Todo
+PUT {{hostname}}/todos/94f7040f-1917-4abb-bc59-463ed2971701
+Authorization: {{token}}
+
+{
+    "title":"tiga",
+    "description":"some desc 3",
+    "status":"DONE"
+}
+
+### Delete Todo
+DELETE {{hostname}}/todos/id
+Authorization: {{token}}
