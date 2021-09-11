@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 
+	"github.com/go-kit/log"
 	"github.com/shandysiswandi/gokit-service/entity"
 	"github.com/shandysiswandi/gokit-service/repository"
 )
@@ -23,15 +24,18 @@ var (
 )
 
 type todoService struct {
+	logger  log.Logger
 	dbRW    repository.DatabaseReaderWriter
 	cacheRW repository.CacheReaderWriter
 }
 
 func NewTodoService(
+	logger log.Logger,
 	dbRW repository.DatabaseReaderWriter,
 	cacheRW repository.CacheReaderWriter,
 ) *todoService {
 	return &todoService{
+		logger:  logger,
 		dbRW:    dbRW,
 		cacheRW: cacheRW,
 	}
