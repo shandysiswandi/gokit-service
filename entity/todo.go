@@ -7,8 +7,10 @@ import (
 type Status string
 
 const (
-	DONE  Status = "done"
-	DRAFT Status = "draft"
+	DRAFT       Status = "DRAFT"
+	IN_PROGRESS Status = "IN_PROGRESS"
+	CANCEL      Status = "CANCEL"
+	DONE        Status = "DONE"
 )
 
 func (s Status) ToUpper() string {
