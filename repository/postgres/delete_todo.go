@@ -15,12 +15,12 @@ func (p *pgSQL) DeleteTodo(ctx context.Context, id string) error {
 	res, err := p.db.ExecContext(ctx, query, id)
 	p.mu.Unlock()
 	if err != nil {
-		logger.Error("pgSQL.GetAllTodo - db.ExecContext [err] " + err.Error())
+		logger.Error("pgSQL.DeleteTodo - db.ExecContext [err] " + err.Error())
 		return err
 	}
 
 	if val, err := res.RowsAffected(); err != nil || val == 0 {
-		logger.Error("pgSQL.GetAllTodo - data not found")
+		logger.Error("pgSQL.DeleteTodo - data not found")
 		return sql.ErrNoRows
 	}
 
