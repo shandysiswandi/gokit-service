@@ -35,20 +35,20 @@ type Todo struct {
 
 type GetAllTodoTodoRequest struct{}
 type GetAllTodoTodoResponse struct {
-	Code    int32       `json:"code"`
-	Status  string      `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Code    int32  `json:"code"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
+	Data    []Todo `json:"data"`
 }
 
 type GetTodoByIDTodoRequest struct {
 	ID string `json:"id"`
 }
 type GetTodoByIDTodoResponse struct {
-	Code    int32       `json:"code"`
-	Status  string      `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Code    int32  `json:"code"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
+	Data    Todo   `json:"data"`
 }
 
 type CreateTodoRequest struct {
@@ -56,10 +56,9 @@ type CreateTodoRequest struct {
 	Description string `json:"description"`
 }
 type CreateTodoResponse struct {
-	Code    int32       `json:"code"`
-	Status  string      `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Code    int32  `json:"code"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
 }
 
 type UpdateTodoRequest struct {
@@ -69,18 +68,16 @@ type UpdateTodoRequest struct {
 	Status      Status `json:"status,omitempty"`
 }
 type UpdateTodoResponse struct {
-	Code    int32       `json:"code"`
-	Status  string      `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Code    int32  `json:"code"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
 }
 
 type DeleteTodoRequest struct {
 	ID string `json:"id"`
 }
 type DeleteTodoResponse struct {
-	Code    int32       `json:"code"`
-	Status  string      `json:"status"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Code    int32  `json:"code"`
+	Status  string `json:"status"`
+	Message string `json:"message"`
 }
