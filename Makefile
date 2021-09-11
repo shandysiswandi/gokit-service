@@ -1,9 +1,10 @@
 # Variables
 filename ?= foo
+server ?= http
 
 # Commands 
 run:
-	@go run cmd/http/main.go
+	@go run cmd/$(server)/main.go
 
 test:
 	@go test ./entity/... ./pkg/... ./repository/... ./service/... ./validate/...
