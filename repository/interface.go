@@ -19,6 +19,10 @@ type DatabaseReaderWriter interface {
 }
 
 type CacheReaderWriter interface {
+	GetAllTodo() []entity.Todo
+	SetAllTodo() error
+	GetTodoByID() entity.Todo
+	SetTodoByID() error
 	//
 	Close() error
 }
