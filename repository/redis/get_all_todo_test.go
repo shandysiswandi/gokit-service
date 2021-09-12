@@ -57,6 +57,7 @@ func Test_redisCache_GetAllTodo(t *testing.T) {
 			rdb := redisCache{client: db}
 			data := rdb.GetAllTodo(tc.args.ctx, tc.args.key)
 			assert.Equal(t, tc.want, data)
+			mock.ExpectationsWereMet()
 		})
 	}
 }
@@ -100,6 +101,7 @@ func Test_redisCache_SetAllTodo(t *testing.T) {
 			err := rdb.SetAllTodo(tc.args.ctx, tc.args.key, tc.args.value)
 			log.Println(err)
 			assert.Equal(t, tc.wantErr, err != nil)
+			mock.ExpectationsWereMet()
 		})
 	}
 }
