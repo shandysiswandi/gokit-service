@@ -57,7 +57,6 @@ go-kit service is a template for building microservice using golang with tranpor
     - [Package Name](#package-name)
     - [Filename](#filename)
     - [Folder](#folder)
-    - [Folder](#folder)
 - [Style](#style)
     - [Unnecessary Else](#unnecessary-else)
     - [Use Raw String Literals to Avoid Escaping](#use-raw-string-literals-to-avoid-escaping)
