@@ -16,18 +16,20 @@ go-kit service is a template for building microservice using golang with tranpor
 ├── pkg
 │   ├── bcrypt
 │   ├── env
-│   └── logger
+│   ├── jwt
+│   └── uuid
 ├── proto
 ├── repository
-│   └── postgres
+│   ├── postgres
+│   └── redis
 ├── resource
 │   ├── migration
 │   ├── seeder
 │   └── view
 ├── service
 ├── transport
-│   ├── grpc-trans
-│   └── http-trans
+│   ├── grpctrans
+│   └── httptrans
 └── validate
 ```
 | Directory   | Description |
