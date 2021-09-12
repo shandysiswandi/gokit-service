@@ -98,16 +98,14 @@ func (_m *DatabaseReaderWriter) GetDB() *sql.DB {
 }
 
 // GetTodoByID provides a mock function with given fields: ctx, id
-func (_m *DatabaseReaderWriter) GetTodoByID(ctx context.Context, id string) ([]entity.Todo, error) {
+func (_m *DatabaseReaderWriter) GetTodoByID(ctx context.Context, id string) (entity.Todo, error) {
 	ret := _m.Called(ctx, id)
 
-	var r0 []entity.Todo
-	if rf, ok := ret.Get(0).(func(context.Context, string) []entity.Todo); ok {
+	var r0 entity.Todo
+	if rf, ok := ret.Get(0).(func(context.Context, string) entity.Todo); ok {
 		r0 = rf(ctx, id)
 	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).([]entity.Todo)
-		}
+		r0 = ret.Get(0).(entity.Todo)
 	}
 
 	var r1 error
