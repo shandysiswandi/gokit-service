@@ -79,6 +79,8 @@ Before starting to use this project, it is a good idea to read the guide below.
 - go-kit/kit [github](https://github.com/go-kit/kit)
 - go-kit/log [github](https://github.com/go-kit/log)
 - go-playground/validator [github](https://github.com/go-playground/validator)
+- go-redis/redis [github](https://github.com/go-redis/redis)
+- go-redis/redismock [github](https://github.com/go-redis/redismock)
 - golang/protobuf [github](https://github.com/golang/protobuf)
 - google/uuid [github](https://github.com/google/uuid)
 - gorilla/mux [github](https://github.com/gorilla/mux)
