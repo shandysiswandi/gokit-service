@@ -3,7 +3,6 @@ package redis
 import (
 	"context"
 	"encoding/json"
-	"log"
 	"testing"
 	"time"
 
@@ -99,7 +98,6 @@ func Test_redisCache_SetAllTodo(t *testing.T) {
 			tc.mocking(tc.args)
 			rdb := redisCache{client: db}
 			err := rdb.SetAllTodo(tc.args.ctx, tc.args.key, tc.args.value)
-			log.Println(err)
 			assert.Equal(t, tc.wantErr, err != nil)
 			mock.ExpectationsWereMet()
 		})
