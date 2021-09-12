@@ -63,7 +63,12 @@ func main() {
 	// setup repository cache
 	var cacheRW repository.CacheReaderWriter
 	{
-		cacheRW, err = redis.NewRedis()
+		cacheRW, err = redis.NewRedis(redis.Configuration{
+			Host:     env.Get("CACHE_HOST"),
+			Port:     env.GetInt("CACHE_PORT"),
+			Password: env.Get("CACHE_PASSWORD"),
+			DB:       env.GetInt("CACHE_DB"),
+		})
 		if err != nil {
 			level.Error(logger).Log("msg", err)
 			os.Exit(1)
