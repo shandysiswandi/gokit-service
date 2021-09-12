@@ -3,6 +3,8 @@
 package mocks
 
 import (
+	context "context"
+
 	entity "github.com/shandysiswandi/gokit-service/entity"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -26,13 +28,13 @@ func (_m *CacheReaderWriter) Close() error {
 	return r0
 }
 
-// GetAllTodo provides a mock function with given fields:
-func (_m *CacheReaderWriter) GetAllTodo() []entity.Todo {
-	ret := _m.Called()
+// GetAllTodo provides a mock function with given fields: ctx, k
+func (_m *CacheReaderWriter) GetAllTodo(ctx context.Context, k string) []entity.Todo {
+	ret := _m.Called(ctx, k)
 
 	var r0 []entity.Todo
-	if rf, ok := ret.Get(0).(func() []entity.Todo); ok {
-		r0 = rf()
+	if rf, ok := ret.Get(0).(func(context.Context, string) []entity.Todo); ok {
+		r0 = rf(ctx, k)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).([]entity.Todo)
@@ -42,13 +44,13 @@ func (_m *CacheReaderWriter) GetAllTodo() []entity.Todo {
 	return r0
 }
 
-// GetTodoByID provides a mock function with given fields:
-func (_m *CacheReaderWriter) GetTodoByID() entity.Todo {
-	ret := _m.Called()
+// GetTodoByID provides a mock function with given fields: ctx, k
+func (_m *CacheReaderWriter) GetTodoByID(ctx context.Context, k string) entity.Todo {
+	ret := _m.Called(ctx, k)
 
 	var r0 entity.Todo
-	if rf, ok := ret.Get(0).(func() entity.Todo); ok {
-		r0 = rf()
+	if rf, ok := ret.Get(0).(func(context.Context, string) entity.Todo); ok {
+		r0 = rf(ctx, k)
 	} else {
 		r0 = ret.Get(0).(entity.Todo)
 	}
@@ -56,13 +58,13 @@ func (_m *CacheReaderWriter) GetTodoByID() entity.Todo {
 	return r0
 }
 
-// SetAllTodo provides a mock function with given fields:
-func (_m *CacheReaderWriter) SetAllTodo() error {
-	ret := _m.Called()
+// SetAllTodo provides a mock function with given fields: ctx, k, v
+func (_m *CacheReaderWriter) SetAllTodo(ctx context.Context, k string, v []entity.Todo) error {
+	ret := _m.Called(ctx, k, v)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func() error); ok {
-		r0 = rf()
+	if rf, ok := ret.Get(0).(func(context.Context, string, []entity.Todo) error); ok {
+		r0 = rf(ctx, k, v)
 	} else {
 		r0 = ret.Error(0)
 	}
@@ -70,13 +72,13 @@ func (_m *CacheReaderWriter) SetAllTodo() error {
 	return r0
 }
 
-// SetTodoByID provides a mock function with given fields:
-func (_m *CacheReaderWriter) SetTodoByID() error {
-	ret := _m.Called()
+// SetTodoByID provides a mock function with given fields: ctx, k, v
+func (_m *CacheReaderWriter) SetTodoByID(ctx context.Context, k string, v entity.Todo) error {
+	ret := _m.Called(ctx, k, v)
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func() error); ok {
-		r0 = rf()
+	if rf, ok := ret.Get(0).(func(context.Context, string, entity.Todo) error); ok {
+		r0 = rf(ctx, k, v)
 	} else {
 		r0 = ret.Error(0)
 	}
