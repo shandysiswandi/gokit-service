@@ -28,8 +28,8 @@ gentls:
 
 protoc:
 	@protoc --go_out=plugins=grpc:proto/. proto/todo.proto
-	@protoc --grpc-gateway_out=logtostderr=true,grpc_api_configuration=proto/todo_service.yaml:proto/. proto/todo.proto
-	@protoc --swagger_out=logtostderr=true,grpc_api_configuration=proto/todo_service.yaml:. proto/todo.proto
+	@protoc --grpc-gateway_out=logtostderr=true,grpc_api_configuration=proto/todo.yaml:proto/. proto/todo.proto
+	@protoc --swagger_out=logtostderr=true,grpc_api_configuration=proto/todo.yaml:. proto/todo.proto
 
 mocker:
 	@mockery --output=mock --dir=repository --all
