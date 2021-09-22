@@ -35,18 +35,18 @@ type Todo struct {
 	Status      Status `json:"status,omitempty"`
 }
 
-type GetAllTodoTodoRequest struct{}
-type GetAllTodoTodoResponse struct {
+type GetAllTodoRequest struct{}
+type GetAllTodoResponse struct {
 	Code    int32  `json:"code"`
 	Status  string `json:"status"`
 	Message string `json:"message"`
 	Data    []Todo `json:"data"`
 }
 
-type GetTodoByIDTodoRequest struct {
+type GetTodoByIDRequest struct {
 	ID string `json:"id"`
 }
-type GetTodoByIDTodoResponse struct {
+type GetTodoByIDResponse struct {
 	Code    int32  `json:"code"`
 	Status  string `json:"status"`
 	Message string `json:"message"`
