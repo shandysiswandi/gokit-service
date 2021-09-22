@@ -10,8 +10,8 @@ import (
 )
 
 type TodoService interface {
-	GetAllTodo(ctx context.Context, req entity.GetAllTodoTodoRequest) ([]entity.Todo, error)
-	GetTodoByID(ctx context.Context, req entity.GetTodoByIDTodoRequest) (entity.Todo, error)
+	GetAllTodo(ctx context.Context, req entity.GetAllTodoRequest) ([]entity.Todo, error)
+	GetTodoByID(ctx context.Context, req entity.GetTodoByIDRequest) (entity.Todo, error)
 
 	CreateTodo(ctx context.Context, req entity.CreateTodoRequest) error
 	UpdateTodo(ctx context.Context, req entity.UpdateTodoRequest) error

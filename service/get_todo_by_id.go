@@ -7,7 +7,7 @@ import (
 	"github.com/shandysiswandi/gokit-service/entity"
 )
 
-func (ts *todoService) GetTodoByID(ctx context.Context, req entity.GetTodoByIDTodoRequest) (entity.Todo, error) {
+func (ts *todoService) GetTodoByID(ctx context.Context, req entity.GetTodoByIDRequest) (entity.Todo, error) {
 	data, err := ts.dbRW.GetTodoByID(ctx, req.ID)
 	if err != nil {
 		return entity.Todo{}, err
@@ -15,7 +15,7 @@ func (ts *todoService) GetTodoByID(ctx context.Context, req entity.GetTodoByIDTo
 	return data, nil
 }
 
-func (m *middleware) GetTodoByID(ctx context.Context, req entity.GetTodoByIDTodoRequest) (entity.Todo, error) {
+func (m *middleware) GetTodoByID(ctx context.Context, req entity.GetTodoByIDRequest) (entity.Todo, error) {
 	level.Info(m.logger).Log("method", "GetTodoByID", "request", req)
 	return m.next.GetTodoByID(ctx, req)
 }
