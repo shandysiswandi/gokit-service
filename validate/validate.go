@@ -41,11 +41,11 @@ func init() {
 // }
 
 // validator.ValidationErrors
-func ValidateGetAllTodoTodo(req entity.GetAllTodoTodoRequest) error {
+func ValidateGetAllTodo(req entity.GetAllTodoRequest) error {
 	return validate.Struct(req)
 }
 
-func ValidateGetTodoByIDTodo(req entity.GetTodoByIDTodoRequest) error {
+func ValidateGetTodoByID(req entity.GetTodoByIDRequest) error {
 	return validate.Struct(req)
 }
 
