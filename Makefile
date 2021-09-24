@@ -1,10 +1,9 @@
 # Variables
 filename ?= foo
-server ?= http
 
 # Commands 
 run:
-	@go run cmd/$(server)/main.go
+	@go run cmd/grpc/main.go
 
 test:
 	@go test ./entity/... ./pkg/... ./repository/... ./service/... ./validate/...
