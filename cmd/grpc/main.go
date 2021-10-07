@@ -1,7 +1,6 @@
 package main
 
 import (
-	"crypto/tls"
 	"fmt"
 	"net"
 	"os"
@@ -91,18 +90,40 @@ func main() {
 		end = endpoint.NewEndpoints(srv, env.Get("JWT_SECRET"))
 	}
 
+	// runServer
+	run(logger, end)
+
+	errs := make(chan error, 1)
+	go func() {
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+		errs <- fmt.Errorf("exit %s", <-c)
+		close(c)
+	}()
+
+	level.Error(logger).Log("msg", <-errs)
+	close(errs)
+}
+
+func run(logger log.Logger, end endpoint.Endpoints) {
 	// Create net listener
-	grpcListener, err := net.Listen("tcp", "0.0.0.0:"+env.Get("APP_PORT"))
+	grpcListener, err := net.Listen("tcp", fmt.Sprintf("%s:%s", env.Get("APP_HOST"), env.Get("APP_PORT")))
+	if err != nil {
+		level.Error(logger).Log("msg", err)
+		os.Exit(1)
+	}
+
+	// TLS / SSL
+	dir, _ := os.Getwd()
+	creds, err := credentials.NewServerTLSFromFile(dir+env.Get("CERT_PATH"), dir+env.Get("KEY_PATH"))
 	if err != nil {
 		level.Error(logger).Log("msg", err)
 		os.Exit(1)
 	}
 
 	// Create grpc options
-	opts, err := grpcOptions()
-	if err != nil {
-		level.Error(logger).Log("msg", err)
-		os.Exit(1)
+	opts := []grpc.ServerOption{
+		grpc.Creds(creds),
 	}
 
 	// serve grpc server in goroutine
@@ -115,33 +136,4 @@ func main() {
 		level.Info(logger).Log("msg", "Server listen on port "+env.Get("APP_PORT"))
 		server.Serve(grpcListener)
 	}()
-
-	errs := make(chan error)
-	go func() {
-		c := make(chan os.Signal, 1)
-		signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-		errs <- fmt.Errorf("exit %s", <-c)
-	}()
-
-	level.Error(logger).Log("msg", <-errs)
-}
-
-func grpcOptions() ([]grpc.ServerOption, error) {
-	opts := []grpc.ServerOption{}
-
-	// Create the TLS credentials
-	cert, err := tls.LoadX509KeyPair(env.Get("CERT_PATH"), env.Get("KEY_PATH"))
-	if err != nil {
-		return nil, err
-	}
-
-	if env.Get("APP_ENV") != "production" {
-		return opts, nil
-	}
-
-	opts = []grpc.ServerOption{
-		grpc.Creds(credentials.NewServerTLSFromCert(&cert)),
-	}
-
-	return opts, nil
 }
